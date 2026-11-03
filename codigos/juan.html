@@ -1,0 +1,247 @@
+<div class="fgr-activity" id="fgr-activity">
+  <header class="hero">
+    <div class="eyebrow"></div>
+   <center><h1>Reto criminológico</h1></center>
+    <p class="subtitle">Módulo 1. Conceptos, objetos de estudio y paradigmas</p>
+    <p class="intro">Analice cada situación, seleccione la respuesta que corresponda y revise la retroalimentación para fortalecer su comprensión.</p>
+    <div class="meta"><span>10 reactivos</span><span>Actividad formativa</span><span>Sin ponderación</span></div>
+  </header>
+
+  <section class="progress-wrap" aria-label="Progreso de la actividad">
+    <div class="progress-label"><span id="progress-text">Pregunta 1 de 10</span><span id="progress-percent">10%</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  </section>
+
+  <main class="quiz-area">
+    <div class="question-card" id="question-card">
+      <div class="question-kicker" id="question-category">PARADIGMAS</div>
+      <h2 id="question-title"></h2>
+      <div class="scenario" id="question-scenario"></div>
+      <div class="answers" id="answers"></div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite" hidden></div>
+      <div class="actions">
+        <button class="btn btn-primary" id="check-btn" disabled>Comprobar respuesta</button>
+        <button class="btn btn-secondary" id="next-btn" hidden>Siguiente pregunta</button>
+      </div>
+    </div>
+    <section class="results-card" id="results-card" hidden>
+      <div class="result-mark" aria-hidden="true">✓</div>
+      <div class="question-kicker">ACTIVIDAD CONCLUIDA</div>
+      <h2>Ha finalizado el reto criminológico</h2>
+      <p class="score-line">Respuestas correctas: <strong id="score"></strong> de 10</p>
+      <p id="result-message"></p>
+      <p class="closing-note">Recuerde: un factor de riesgo no es un destino; no toda desviación es delito, y las palabras con que se describe a las personas también producen efectos.</p>
+      <button class="btn btn-primary" id="restart-btn">Intentar de nuevo</button>
+    </section>
+  </main>
+  <footer>Órgano de Desarrollo Institucional y Servicio Profesional de Carrera</footer>
+</div>
+<script>
+const questions = [
+  {
+    category: "PARADIGMAS",
+    title: "Una unidad de análisis reúne los casos de robo registrados en una zona durante el último año para identificar características comunes. ¿Qué paradigma orienta esta pregunta?",
+    scenario: "Se busca observar información y encontrar regularidades entre los casos, sin convertir los datos en predicciones inevitables sobre personas.",
+    options: ["Interaccionismo simbólico", "Positivismo", "Criminología crítica"],
+    correct: 1,
+    good: "¡Correcto! Buscar regularidades y factores asociados a partir de la observación empírica corresponde al positivismo.",
+    bad: "La clave está en la búsqueda de regularidades mediante información observable. Ese enfoque corresponde al positivismo."
+  },
+  {
+    category: "PARADIGMAS",
+    title: "Vecinos y policías llaman «delincuente» a un joven. El análisis pregunta qué efectos produce esa etiqueta en sus oportunidades y relaciones. ¿Qué paradigma se utiliza?",
+    scenario: "El interés está en los significados construidos durante la interacción social y en las consecuencias de la reacción de los demás.",
+    options: ["Positivismo", "Criminología crítica", "Interaccionismo simbólico"],
+    correct: 2,
+    good: "¡Muy bien! El interaccionismo simbólico estudia cómo se construyen las definiciones sociales y qué efectos producen las etiquetas.",
+    bad: "El planteamiento no busca regularidades ni distribución del control: examina la etiqueta y sus efectos en la interacción. Corresponde al interaccionismo simbólico."
+  },
+  {
+    category: "PARADIGMAS",
+    title: "Una investigación pregunta por qué la vigilancia se concentra en ciertos grupos y qué daños quedan fuera de la respuesta institucional. ¿Qué paradigma guía el análisis?",
+    scenario: "La pregunta considera las relaciones de poder, la desigualdad y la distribución selectiva del control penal.",
+    options: ["Criminología crítica", "Positivismo", "Interaccionismo simbólico"],
+    correct: 0,
+    good: "¡Exacto! La criminología crítica examina quién define los problemas, cómo se distribuye el control y qué daños quedan fuera del foco.",
+    bad: "El énfasis en las relaciones de poder, la selección penal y la distribución de las respuestas corresponde a la criminología crítica."
+  },
+  {
+    category: "PARADIGMAS",
+    title: "«Como abandonó la escuela y vive en una zona con violencia, seguramente seguirá delinquiendo». ¿Qué error contiene esta afirmación?",
+    scenario: "Considere la diferencia entre identificar condiciones asociadas con un fenómeno y afirmar que determinan inevitablemente la conducta de una persona.",
+    options: ["Confunde reacción formal e informal", "Incurre en determinismo", "Equipara desviación y victimización"],
+    correct: 1,
+    good: "¡Correcto! Es determinismo: convierte factores asociados en un destino. Un factor de riesgo no permite predecir mecánicamente la conducta.",
+    bad: "La afirmación convierte condiciones asociadas en una predicción segura. Ese error se denomina determinismo."
+  },
+  {
+    category: "OBJETOS DE ESTUDIO",
+    title: "Se reportan daños a vehículos y la conducta está prevista y sancionada por la legislación penal. ¿Qué objeto de estudio permite clasificarla?",
+    scenario: "Distinga la categoría jurídico-penal de otras categorías sociales o analíticas.",
+    options: ["Desviación", "Daño social", "Delito"],
+    correct: 2,
+    good: "¡Correcto! El delito es una categoría jurídico-penal definida por la legislación.",
+    bad: "Cuando la conducta está prevista y sancionada por la legislación penal, corresponde a la categoría de delito."
+  },
+  {
+    category: "OBJETOS DE ESTUDIO",
+    title: "El consumo de alcohol en la vía pública genera molestia entre vecinos, pero el caso no establece que constituya un delito. ¿Qué concepto ayuda a analizarlo?",
+    scenario: "La conducta se aparta de normas o expectativas sociales y su valoración depende del contexto y de la respuesta que genera.",
+    options: ["Desviación", "Sistema de justicia penal", "Victimización"],
+    correct: 0,
+    good: "¡Bien! La desviación comprende conductas que se apartan de normas o expectativas sociales; no toda desviación es delito.",
+    bad: "El planteamiento describe una conducta que genera rechazo social, sin afirmar que esté tipificada penalmente. Corresponde a desviación."
+  },
+  {
+    category: "OBJETOS DE ESTUDIO",
+    title: "Una persona presenta afectaciones físicas, psicológicas y materiales después de un hecho violento. ¿Qué dimensión del análisis criminológico debe considerarse?",
+    scenario: "El análisis también debe revisar las circunstancias del hecho, las necesidades de atención y las respuestas institucionales.",
+    options: ["Estructuras sociales", "Víctima", "Estado"],
+    correct: 1,
+    good: "¡Exacto! El análisis de la víctima considera las consecuencias del hecho, sus necesidades de atención y las respuestas que recibe.",
+    bad: "La dimensión que contempla a la persona o colectivo afectado, sus consecuencias y necesidades de atención es la víctima."
+  },
+  {
+    category: "OBJETOS DE ESTUDIO",
+    title: "Una colonia carece de alumbrado, transporte suficiente y espacios comunitarios. ¿Qué objeto de estudio permite examinar estas condiciones del entorno?",
+    scenario: "Se consideran patrones relativamente estables de relaciones, instituciones y distribución de recursos que condicionan oportunidades y experiencias.",
+    options: ["Reacción social", "Delito", "Estructuras sociales"],
+    correct: 2,
+    good: "¡Correcto! Las estructuras sociales permiten estudiar condiciones económicas, culturales, institucionales y territoriales del contexto.",
+    bad: "Las condiciones del entorno y la distribución de recursos corresponden al análisis de las estructuras sociales."
+  },
+  {
+    category: "OBJETOS DE ESTUDIO",
+    title: "Los vecinos difunden rumores y llaman «problemáticos» a ciertos jóvenes. ¿Qué tipo de respuesta representa esta conducta?",
+    scenario: "La respuesta proviene de integrantes de la comunidad y puede generar exclusión o estigmatización.",
+    options: ["Reacción social informal", "Reacción social formal", "Sistema de justicia penal"],
+    correct: 0,
+    good: "¡Muy bien! Los rumores, la desaprobación comunitaria, la exclusión y la estigmatización son manifestaciones de reacción social informal.",
+    bad: "La respuesta proviene de vecinos, no de una institución. Por ello corresponde a reacción social informal."
+  },
+  {
+    category: "OBJETOS DE ESTUDIO",
+    title: "La policía realiza recorridos frecuentes y las instituciones investigan, persiguen y juzgan hechos posiblemente delictivos. ¿Qué dimensión institucional permite analizar estos procedimientos?",
+    scenario: "Considere las instituciones y procedimientos que intervienen frente al delito conforme al orden jurídico aplicable.",
+    options: ["Desviación", "Sistema de justicia penal", "Daño social"],
+    correct: 1,
+    good: "¡Correcto! El sistema de justicia penal comprende instituciones y procedimientos para investigar, perseguir, juzgar y ejecutar las consecuencias jurídicas de los delitos.",
+    bad: "La referencia a instituciones y procedimientos que intervienen frente al delito corresponde al sistema de justicia penal."
+  }
+];
+
+let current = 0;
+let selected = null;
+let score = 0;
+let answered = false;
+
+const $ = (id) => document.getElementById(id);
+const categoryEl = $("question-category");
+const titleEl = $("question-title");
+const scenarioEl = $("question-scenario");
+const answersEl = $("answers");
+const feedbackEl = $("feedback");
+const checkBtn = $("check-btn");
+const nextBtn = $("next-btn");
+
+function renderQuestion() {
+  const q = questions[current];
+  selected = null;
+  answered = false;
+  $("question-card").hidden = false;
+  $("results-card").hidden = true;
+  categoryEl.textContent = q.category;
+  titleEl.textContent = q.title;
+  scenarioEl.textContent = q.scenario;
+  answersEl.innerHTML = "";
+  feedbackEl.hidden = true;
+  feedbackEl.className = "feedback";
+  checkBtn.hidden = false;
+  checkBtn.disabled = true;
+  nextBtn.hidden = true;
+  nextBtn.textContent = current === questions.length - 1 ? "Ver resultados" : "Siguiente pregunta";
+
+  q.options.forEach((option, index) => {
+    const label = document.createElement("label");
+    label.className = "answer-option";
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "answer";
+    input.value = index;
+    input.addEventListener("change", () => {
+      if (answered) return;
+      selected = index;
+      document.querySelectorAll(".answer-option").forEach(el => el.classList.remove("selected"));
+      label.classList.add("selected");
+      checkBtn.disabled = false;
+    });
+    const span = document.createElement("span");
+    span.textContent = option;
+    label.append(input, span);
+    answersEl.appendChild(label);
+  });
+
+  $("progress-text").textContent = `Pregunta ${current + 1} de ${questions.length}`;
+  $("progress-percent").textContent = `${Math.round(((current + 1) / questions.length) * 100)}%`;
+  $("progress-fill").style.width = `${((current + 1) / questions.length) * 100}%`;
+}
+
+function checkAnswer() {
+  if (selected === null || answered) return;
+  answered = true;
+  const q = questions[current];
+  const isCorrect = selected === q.correct;
+  if (isCorrect) score++;
+
+  document.querySelectorAll(".answer-option").forEach((label, index) => {
+    label.classList.add("disabled");
+    const input = label.querySelector("input");
+    input.disabled = true;
+    if (index === q.correct) label.classList.add("correct");
+    else if (index === selected) label.classList.add("incorrect");
+  });
+
+  feedbackEl.hidden = false;
+  feedbackEl.className = `feedback ${isCorrect ? "good" : "bad"}`;
+  const heading = document.createElement("strong");
+  heading.textContent = isCorrect ? "Respuesta correcta" : "Revise este planteamiento";
+  const message = document.createElement("span");
+  message.textContent = isCorrect ? q.good : q.bad;
+  feedbackEl.replaceChildren(heading, message);
+
+  checkBtn.hidden = true;
+  nextBtn.hidden = false;
+}
+
+function showResults() {
+  $("question-card").hidden = true;
+  $("results-card").hidden = false;
+  $("score").textContent = score;
+  let message = "";
+  if (score === 10) message = "¡Excelente trabajo! Identificó con precisión los conceptos, objetos de estudio y paradigmas del módulo.";
+  else if (score >= 7) message = "Buen trabajo. Ha reconocido la mayoría de los conceptos. Revise la retroalimentación de los reactivos para consolidar su comprensión.";
+  else message = "Le invitamos a revisar nuevamente los apartados del módulo y realizar otra vez la actividad. Recuerde que el propósito es formativo.";
+  $("result-message").textContent = message;
+  $("progress-text").textContent = "Actividad concluida";
+  $("progress-percent").textContent = "100%";
+  $("progress-fill").style.width = "100%";
+}
+
+checkBtn.addEventListener("click", checkAnswer);
+nextBtn.addEventListener("click", () => {
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+});
+$("restart-btn").addEventListener("click", () => {
+  current = 0;
+  score = 0;
+  renderQuestion();
+});
+
+renderQuestion();
+</script>
+<link rel="stylesheet" type="text/css" href="juan.css">
